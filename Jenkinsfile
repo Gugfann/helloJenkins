@@ -1,6 +1,10 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent { docker { image 'golang:1.21.1-alpine3.18' } }
+    environment {
+        DISABLE_AUTH = 'true'
+        DB_ENGINE    = 'sqlite'
+    }
     stages {
         stage('build') {
             steps {
@@ -9,6 +13,9 @@ pipeline {
                     echo "The second step is also running"
                     ls -lah
                 '''
+                echo "Database engine is ${DB_ENGINE}"
+                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                sh 'printenv'
             }
             post {
                 always {
