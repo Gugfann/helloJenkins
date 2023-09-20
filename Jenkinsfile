@@ -50,6 +50,9 @@ pipeline {
 
         stage('Sanity check') {
             steps {
+                mail to: 'kmolha@gmail.com',
+                    subject: "Jenkins needs your input",
+                    body: "Can you please approve this deployment?"
                 input "Does the staging environment look ok?"
             }
         }
