@@ -5,6 +5,10 @@ pipeline {
         stage('build') {
             steps {
                 sh 'go version'
+                sh '''
+                    echo "The second step is also running"
+                    ls -lah
+                '''
             }
         }
     }
