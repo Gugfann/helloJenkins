@@ -23,6 +23,9 @@ pipeline {
                 }
                 success {
                     echo 'This will run only if successful'
+                    mail to: 'kmolha@gmail.com',
+                        subject: "Jenkins build was successful",
+                        body: "Congrats, old man"
                 }
                 failure {
                     echo 'This will run only if failed'
